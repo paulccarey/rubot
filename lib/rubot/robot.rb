@@ -6,5 +6,7 @@ module Rubot
     def initialize(table=Table.new)
       @table = table
     end
+
+
   end
 end

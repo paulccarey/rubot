@@ -16,4 +16,16 @@ describe Rubot::Table do
       expect(table.y_bound).to eq(5)
     end
   end
+
+  describe '#place' do
+
+    let(:table) { Rubot::Table.new(5, 5) }
+
+    context 'robot is placed at an invalid position' do
+
+      it 'raises an IncorrectPositionError' do
+        expect { table.place(:robot, 6, 6) }.to raise_error(Rubot::Errors::IncorrectPositionError)
+      end
+    end
+  end
 end
