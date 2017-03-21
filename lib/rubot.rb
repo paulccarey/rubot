@@ -1,4 +1,5 @@
 require "rubot/version"
+require "rubot/table"
 
 module Rubot
 
