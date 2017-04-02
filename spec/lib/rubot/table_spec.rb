@@ -15,6 +15,11 @@ describe Rubot::Table do
       expect(table.x_bound).to eq(5)
       expect(table.y_bound).to eq(5)
     end
+
+    it 'requires bounds to be at least 1' do
+      expect { Rubot::Table.new(1, 0) }.to raise_error(Rubot::Errors::IncorrectBoundError).with_message('Table bounds must be greater than 0')
+      expect { Rubot::Table.new(0, 1) }.to raise_error(Rubot::Errors::IncorrectBoundError).with_message('Table bounds must be greater than 0')
+    end
   end
 
   describe '#place' do
