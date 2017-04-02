@@ -6,10 +6,9 @@ require 'rubot'
 
 if $stdin.tty?
   puts 'Interactive execution'
-else
-  puts 'Piped execution'
-
   while line = $stdin.gets
     puts line
   end
+else
+  puts 'Piped execution'
 end
