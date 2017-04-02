@@ -1,28 +1,35 @@
 # Rubot
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rubot`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+- The application is a simulation of a toy robot moving on a square tabletop,
+  of dimensions 5 units x 5 units.
+- There are no other obstructions on the table surface.
+- The robot is free to roam around the surface of the table, but must be
+  prevented from falling to destruction. Any movement that would result in the
+  robot falling from the table must be prevented, however further valid
+  movement commands must still be allowed.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Build and install via Rake:
 
-```ruby
-gem 'rubot'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install rubot
+    $ rake install
 
 ## Usage
 
-TODO: Write usage instructions here
+### Commands File
+  
+You can prepare and run a commands file by piping its contents to the rubot command.
+
+```text
+# commands.rubot
+PLACE 0,0,NORTH
+MOVE
+REPORT
+```
+
+    $ rubot < commands.rubot
+    $ 0,1,NORTH
+    $
 
 ## Development
 
@@ -32,5 +39,23 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rubot.
+Bug reports and pull requests are welcome on GitHub at https://github.com/paulccarey/rubot.
 
+## Considerations
+
+The following documents any considerations in the design of the Robot Simulation.
+
+### Table
+
+* Knows its limits/bounds
+* Knows if a location is valid
+
+### Robot
+
+* Knows and Changes its orientation
+* Knows its location
+* Moves its location
+
+## Future Improvements
+
+* Table could track locations of Robot(s) especially if multiple, acting as a registry.
