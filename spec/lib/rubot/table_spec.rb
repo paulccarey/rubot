@@ -22,14 +22,65 @@ describe Rubot::Table do
     end
   end
 
-  describe '#place' do
+  describe '#position_valid?' do
 
-    let(:table) { Rubot::Table.new(5, 5) }
+    subject do
+      table = Rubot::Table.new(5, 5)
+      table.position_valid?(*position)
+    end
 
-    context 'robot is placed at an invalid position' do
+    context 'position is not valid because it is negative' do
 
-      it 'raises an IncorrectPositionError' do
-        expect { table.place(:robot, 6, 6) }.to raise_error(Rubot::Errors::IncorrectPositionError)
+      context 'only x bound is negative' do
+
+        let(:position) { [-1, 1] }
+
+        it { is_expected.to be_falsey }
+      end
+
+      context 'only y bound is negative' do
+
+        let(:position) { [1, -1] }
+
+        it { is_expected.to be_falsey }
+      end
+    end
+
+    context 'position is not valid because it is out of max bounds' do
+
+      context 'only x bound is out of max bounds' do
+
+        let(:position) { [6, 1] }
+
+        it { is_expected.to be_falsey }
+      end
+
+      context 'only y bound is out of max bounds' do
+
+        let(:position) { [1, 6] }
+
+        it { is_expected.to be_falsey }
+      end
+    end
+
+    context 'position is valid' do
+
+      context 'position is on minimum of bounds' do
+        let(:position) { [0, 0] }
+
+        it { is_expected.to be_truthy }
+      end
+
+      context 'position is in middle of bounds' do
+        let(:position) { [3, 3] }
+
+        it { is_expected.to be_truthy }
+      end
+
+      context 'position is at max of bounds' do
+        let(:position) { [5, 5] }
+
+        it { is_expected.to be_truthy }
       end
     end
   end
