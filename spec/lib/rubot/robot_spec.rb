@@ -15,6 +15,11 @@ describe Rubot::Robot do
       robot = Rubot::Robot.new
       expect(robot.table).to eq(:table)
     end
+
+    it 'initializes a new compass' do
+      robot = Rubot::Robot.new
+      expect(robot.compass).to be_instance_of(Rubot::Compass)
+    end
   end
 
   describe '#place' do
