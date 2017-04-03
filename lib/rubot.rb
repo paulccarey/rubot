@@ -1,7 +1,8 @@
-require "rubot/version"
-require "rubot/errors"
-require "rubot/table"
-require "rubot/robot"
+require 'rubot/version'
+require 'rubot/errors'
+require 'rubot/table'
+require 'rubot/compass'
+require 'rubot/robot'
 
 module Rubot
 
