@@ -1,6 +1,9 @@
 module Rubot
   module Errors
-    class IncorrectPositionError < StandardError;
+    class IncorrectPositionPlacedError < StandardError
+      def message
+        'Robot was placed at an incorrect position'
+      end
     end
     class IncorrectBoundError < StandardError
       def message
