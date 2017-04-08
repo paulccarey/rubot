@@ -15,7 +15,7 @@ module Rubot
     end
 
     def orientation=(new_orientation)
-      @angle =  ORIENTATION_MAP[new_orientation]
+      @angle =  ORIENTATION_MAP[new_orientation.downcase.to_sym]
     end
   end
 end

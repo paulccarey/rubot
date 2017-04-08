@@ -39,6 +39,30 @@ describe Rubot::Compass do
           expect { compass.orientation=:west }.to change { compass.angle }.to(270)
         end
       end
+
+      context 'text provided as input' do
+
+        context 'text is lowercase' do
+
+          it 'converts the key to a symbol and sets the correct angle' do
+            expect { compass.orientation='north' }.to change { compass.angle }.to(0)
+          end
+        end
+
+        context 'text is uppercase' do
+
+          it 'converts the key to a lowercase symbol and sets the correct angle' do
+            expect { compass.orientation='NORTH' }.to change { compass.angle }.to(0)
+          end
+        end
+
+        context 'text is mixed case (CrAzY CaSe!)' do
+
+          it 'converts the key to a lowercase symbol and sets the correct angle' do
+            expect { compass.orientation='NoRtH' }.to change { compass.angle }.to(0)
+          end
+        end
+      end
     end
   end
 end
