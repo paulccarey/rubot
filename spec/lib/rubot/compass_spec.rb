@@ -15,7 +15,7 @@ describe Rubot::Compass do
     end
   end
 
-  describe 'orientation=' do
+  describe '#orientation=' do
 
     context 'valid orientation provided' do
 
@@ -62,6 +62,47 @@ describe Rubot::Compass do
             expect { compass.orientation='NoRtH' }.to change { compass.angle }.to(0)
           end
         end
+      end
+    end
+  end
+
+  describe '#left' do
+
+    let(:compass) { Rubot::Compass.new(starting_angle) }
+
+    context 'the angle is starting from north' do
+
+      let(:starting_angle) { 0 }
+
+      it 'rotates to a western angle of 270 degrees' do
+        expect { compass.left }.to change { compass.angle }.to(270)
+      end
+    end
+
+    context 'the angle is starting from west' do
+
+      let(:starting_angle) { 270 }
+
+      it 'rotates to a southern angle of 180 degrees' do
+        expect { compass.left }.to change { compass.angle }.to(180)
+      end
+    end
+
+    context 'the angle is starting from south' do
+
+      let(:starting_angle) { 180 }
+
+      it 'rotates to a eastern angle of 90 degrees' do
+        expect { compass.left }.to change { compass.angle }.to(90)
+      end
+    end
+
+    context 'the angle is starting from east' do
+
+      let(:starting_angle) { 90 }
+
+      it 'rotates to a northern angle of 0 degrees' do
+        expect { compass.left }.to change { compass.angle }.to(0)
       end
     end
   end
