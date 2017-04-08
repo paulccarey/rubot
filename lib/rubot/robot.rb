@@ -10,6 +10,8 @@ module Rubot
 
     def place(x_position, y_position, orientation)
       raise Rubot::Errors::IncorrectPositionPlacedError unless table.position_valid?(x_position, y_position)
+      @x_position, @y_position = x_position, y_position
+      # self.orientation = orientation
     end
   end
 end

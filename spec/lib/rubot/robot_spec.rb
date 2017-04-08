@@ -24,18 +24,26 @@ describe Rubot::Robot do
 
   describe '#place' do
 
+    let(:robot) do
+      table = Rubot::Table.new(5, 5)
+      Rubot::Robot.new(table)
+    end
+
     context 'robot is placed at an invalid position' do
 
       it 'raises an IncorrectPositionError' do
-        table = Rubot::Table.new(5, 5)
-        robot = Rubot::Robot.new(table)
         expect { robot.place(6, 6, 'NORTH') }.to raise_error(Rubot::Errors::IncorrectPositionPlacedError).with_message('Robot was placed at an incorrect position')
       end
     end
 
     context 'robot is placed at a valid position' do
 
-
+      it 'sets the x and y positions and adjusts the compass angle correctly' do
+        robot.place(2, 3, 'SOUTH')
+        expect(robot.x_position).to eq(2)
+        expect(robot.y_position).to eq(3)
+        # expect(robot.angle).to eq(180)
+      end
     end
   end
 end
