@@ -21,5 +21,9 @@ module Rubot
     def left
       @angle = angle == 0 ? 270 : angle-90
     end
+
+    def right
+      @angle = angle == 270 ? 0 : angle+90
+    end
   end
 end
