@@ -7,7 +7,7 @@ module Rubot
     end
     class IncorrectBoundError < StandardError
       def message
-        'Table bounds must be greater than 0'
+        'Minimum table bound value is 0'
       end
     end
   end
