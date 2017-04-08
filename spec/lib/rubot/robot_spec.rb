@@ -42,7 +42,7 @@ describe Rubot::Robot do
         robot.place(2, 3, 'SOUTH')
         expect(robot.x_position).to eq(2)
         expect(robot.y_position).to eq(3)
-        # expect(robot.angle).to eq(180)
+        expect(robot.angle).to eq(180)
       end
     end
   end
